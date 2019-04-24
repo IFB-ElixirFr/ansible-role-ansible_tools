@@ -1,5 +1,6 @@
 ---
 galaxy_info:
+  role_name: ansible-tools
   description: Ansible role to install ansible tools
   author: dbenaben
   company: Institut Français de Bioinformatique (IFB)
