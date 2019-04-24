@@ -1,0 +1,32 @@
+---
+
+- name: Add ansible repository
+  yum_repository:
+    name: ansible
+    description: Ansible for EL7
+    baseurl: http://releases.ansible.com/ansible/rpm/release/epel-7-$basearch/
+    enabled: true
+    metadata_expire: 7d
+    gpgcheck: false
+
+- name: Install ansible and tools
+  yum:
+    state: present
+    name:
+      - ansible
+      - ansible-lint
+      - yamllint
+      - git
+      # The ipaddr filter requires python-netaddr be installed
+      - python-netaddr
+      # Speeding Up Vault Operations
+      # https://docs.ansible.com/ansible/latest/user_guide/vault.html#speeding-up-vault-operations
+      - python2-cryptography
+      # required for dig lookup (nagios role)
+      - python-dns
+      - python-pip
+  when: not ansible_check_mode
+
+- name: Install python dependencies
+  pip:
+    name: Jinja2==2.8
