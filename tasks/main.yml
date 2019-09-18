@@ -9,7 +9,7 @@
     metadata_expire: 7d
     gpgcheck: false
 
-- name: Install ansible and tools
+- name: Install dependencies
   yum:
     state: present
     name:
@@ -24,6 +24,13 @@
       - python-dns
       - python-pip
   when: not ansible_check_mode
+
+- name: Install python dependencies
+  pip:
+    name: 
+      - Jinja2==2.8
+      - ansible==2.8.4
+      - ansible-lint==3.5.1
  
 - name: Uninstall 
   yum:
@@ -33,10 +40,3 @@
       - ansible
       - ansible-lint
   when: not ansible_check_mode
-
-- name: Install python dependencies
-  pip:
-    name: 
-      - Jinja2==2.8
-      - ansible==2.8.4
-      - ansible-lint==3.5.1
