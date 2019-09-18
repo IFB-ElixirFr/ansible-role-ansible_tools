@@ -26,6 +26,13 @@
       - python-dns
       - python-pip
   when: not ansible_check_mode
+ 
+- name: Uninstall 
+  yum:
+    state: absent
+    name:
+      - python-jinja2
+  when: not ansible_check_mode
 
 - name: Install python dependencies
   pip:
