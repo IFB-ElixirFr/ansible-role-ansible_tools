@@ -13,8 +13,6 @@
   yum:
     state: present
     name:
-      - ansible
-      - ansible-lint
       - yamllint
       - git
       # The ipaddr filter requires python-netaddr be installed
@@ -32,8 +30,13 @@
     state: absent
     name:
       - python-jinja2
+      - ansible
+      - ansible-lint
   when: not ansible_check_mode
 
 - name: Install python dependencies
   pip:
-    name: Jinja2==2.8
+    name: 
+      - Jinja2==2.8
+      - ansible==2.8.4
+      - ansible-lint==3.5.1
