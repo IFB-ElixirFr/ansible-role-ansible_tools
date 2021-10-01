@@ -46,6 +46,17 @@
       - ansible-lint
       - molecule
 
+ # needed  for the The ipv4 ansible filter
+- name: Install Python 2 & 3 netaddr
+  package:
+    state: present
+    name:
+      - python-netaddr
+      - python36-netaddr
+  when: ansible_distribution == 'CentOS'
+
+
+
 # clean mode
 - name: Uninstall OS Package
   package:
