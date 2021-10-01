@@ -1,6 +1,7 @@
 ---
 galaxy_info:
   role_name: ansible_tools
+  namespaces: ifb
   description: Ansible role to install ansible tools
   author: dbenaben
   company: Institut Français de Bioinformatique (IFB)
@@ -14,4 +15,10 @@ galaxy_info:
     - ansible
     - tools
 
-dependencies: []
+dependencies:
+  - role: geerlingguy.repo-epel
+    tags: never
+  - role: geerlingguy.git
+    tags: never
+  - role: geerlingguy.pip
+    tags: never
