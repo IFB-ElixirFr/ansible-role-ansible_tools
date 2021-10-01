@@ -1,0 +1,7 @@
+---
+- name: Converge
+  hosts: all
+  tasks:
+    - name: "Include ifb.ansible_tools"
+      include_role:
+        name: "ifb.ansible_tools"
